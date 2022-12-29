@@ -62,7 +62,7 @@ const AddTask = () => {
             .then(res => res.json())
             .then(data => {
                 navigate('/my-task')
-                toast.success('Save task.')
+                toast.success('Save task.');
             })
     }
     return (
