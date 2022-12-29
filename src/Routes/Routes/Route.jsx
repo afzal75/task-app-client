@@ -5,6 +5,7 @@ import CompletedTask from "../../Pages/CompletedTask/CompletedTask";
 import MyTask from "../../Pages/MyTask/MyTask";
 import Login from "../../Pages/Shared/Login/Login";
 import SignUp from "../../Pages/Shared/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 // import Home from "../../Pages/Home/Home/Home";
 
 const router = createBrowserRouter([
@@ -14,15 +15,19 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <AddTask></AddTask>
+                element: <PrivateRoute><AddTask></AddTask></PrivateRoute>
+            },
+            {
+                path: "/addtask",
+                element: <PrivateRoute><AddTask></AddTask></PrivateRoute>
             },
             {
                 path: "/my-task",
-                element: <MyTask></MyTask>
+                element: <PrivateRoute><MyTask></MyTask></PrivateRoute>
             },
             {
                 path: "/completed-task",
-                element: <CompletedTask></CompletedTask>
+                element: <PrivateRoute><CompletedTask></CompletedTask></PrivateRoute>
             },
             {
                 path: "/login",

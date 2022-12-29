@@ -4,11 +4,6 @@ import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
-    // let activeClass = {
-    //     color: "blue",
-    //     background: "none",
-    // };
-    // log out
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -50,11 +45,12 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className='flex items-center'>
-                    {/* log out button */}
+                    <>
                     <button
                         onClick={handleLogOut}
                         className='py-3 px-4 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 hover:shadow-md hover:shadow-slate-900'
                     >LOG OUT</button>
+                    </>
                     {
                         user?.email && <div>
                         <img className="rounded-full border-4 border-blue-500 ml-3" src={user?.photoURL} alt='' height='80' width='80' />

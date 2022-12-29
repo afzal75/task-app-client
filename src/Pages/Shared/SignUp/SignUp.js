@@ -10,6 +10,7 @@ const SignUp = () => {
     const [signUpError, setSignUpError] = useState('')
     const [imgError, setImgError] = useState('')
     const imageHostKey = process.env.REACT_APP_imgbb_key;
+    console.log(imageHostKey)
     const navigate = useNavigate()
     const handleUserCreate = data => {
         setSignUpError('')
@@ -32,14 +33,14 @@ const SignUp = () => {
                         .then((res) => res.json())
                         .then(imgData => {
                             const userInfo = {
-                                displayName: data.name,
-                                photoURL: imgData.data.url
+                                displayName: data?.name,
+                                photoURL: imgData?.data?.url
                             }
                             // update user
                             updateUserProfile(userInfo)
                                 .then(() => {
                                     // user save database function call
-                                    // saveUserDatabase(user.displayName, user.email, imgData.data.url)
+                                    saveUserDatabase(user?.displayName, user?.email, imgData?.data?.url)
                                 })
                                 .catch(e => console.error(e))
 
@@ -60,20 +61,20 @@ const SignUp = () => {
 
     }
     //user save function
-    // const saveUserDatabase = (name, email, image) => {
-    //     const user = { name, email, image }
-    //     fetch('http://localhost:5000/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             navigate('/')
-    //         })
-    // }
+    const saveUserDatabase = (name, email, image) => {
+        const user = { name, email, image }
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                navigate('/')
+            })
+    }
     return (
         <section className='min-h-screen flex justify-center items-center py-12'>
             <div className='w-96 bg-white p-11 shadow-2xl rounded-lg'>
@@ -115,7 +116,6 @@ const SignUp = () => {
                             {...register("password", {
                                 required: 'Password is required',
                                 minLength: { value: 6, message: 'Password must be 6 characters long' },
-                                // pattern: { value: /(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-__+.])/, message: 'Password must be strong. one capital letter, one number and one special key word (!@#$%^&*()-__+.)' }
                             })}
                         />
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
