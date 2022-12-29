@@ -31,13 +31,11 @@ const Header = () => {
         <header className='bg-white py-2'>
 
             <div className='max-w-[1480px] mx-auto flex justify-between items-center'>
-                {/* LOGO */}
                 <Link to='/'>
-                    <div className='font-semibold text-2xl text-blue-500 border-2 border-green-500 rounded px-2 py-1 hover:bg-slate-900 hover:border-blue-600'>
+                    <div className='font-semibold text-2xl text-blue-500 border-2  rounded px-2 py-1'>
                         <h2>Task App</h2>
                     </div>
                 </Link>
-                {/* nav items */}
                 <div>
 
                     <ul className="flex justify-center items-center text-lg text-slate-600 font-semibold">
@@ -49,11 +47,11 @@ const Header = () => {
                     <button
                         onClick={handleLogOut}
                         className='py-3 px-4 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 hover:shadow-md hover:shadow-slate-900'
-                    >LOG OUT</button>
+                    >Log Out</button>
                     </>
                     {
                         user?.email && <div>
-                        <img className="rounded-full border-4 border-blue-500 ml-3" src={user?.photoURL} alt='' height='80' width='80' />
+                        <img className="rounded-full border-4 border-purple-700-500 ml-3" src={user?.photoURL} alt='' height='80' width='80' />
                         </div>
                     }
                 </div>

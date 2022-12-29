@@ -107,8 +107,9 @@ const Login = () => {
                     {/* google sign in */}
                     <button
                         onClick={handleLoginWithGoogle}
-                        className="bg-slate-800 rounded-full p-2 hover:shadow-md hover:shadow-blue-500">
-                        <FaGoogle className='text-4xl text-blue-500' />
+                        className="bg-gray-400 rounded-full p-2 hover:shadow-md hover:shadow-blue-500">
+                        {/* <FaGoogle className='text-4xl text-blue-500' /> */}
+                        GOOGLE SIGN IN
                     </button>
                 </div>
                 {/* go to sign up page  */}
