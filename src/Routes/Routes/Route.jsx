@@ -3,6 +3,7 @@ import Main from "../../Layout/Main";
 import AddTask from "../../Pages/AddTask/AddTask";
 import CompletedTask from "../../Pages/CompletedTask/CompletedTask";
 import MyTask from "../../Pages/MyTask/MyTask";
+import UpdateTask from "../../Pages/MyTask/UpdateTask";
 import Login from "../../Pages/Shared/Login/Login";
 import SignUp from "../../Pages/Shared/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             }
         ]
+    },
+    {
+        path: '/update-task/:id',
+        loader: ({ params }) => fetch(`http://localhost:5000/task/${params.id}`),
+        element: <PrivateRoute><UpdateTask /></PrivateRoute>
     }
 
 ])
